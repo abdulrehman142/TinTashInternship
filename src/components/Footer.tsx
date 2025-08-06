@@ -52,7 +52,7 @@ useEffect(() => {
             </div>
           </div>
 
-          {/* Right Section with Mode Icon, Socials, and Text */}
+          {/* Right Section with Mode Icon, Social Media, and Text */}
           <div className="w-[400px] h-[164px] relative ml-auto flex flex-col justify-end items-end gap-[12px]">
             {/* 🟢 Top-right Mode Icon */}
            <button
