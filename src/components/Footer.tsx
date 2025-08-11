@@ -1,148 +1,186 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import discordIcon from '../icons/discord.png';
-import tiktokIcon from '../icons/tiktok.png';
-import youtubeIcon from '../icons/youtube.png';
-import modeIcon from '../icons/mode.png';
+import discordIcon from "../icons/discord.png";
+import tiktokIcon from "../icons/tiktok.png";
+import youtubeIcon from "../icons/youtube.png";
+import modeIcon from "../icons/mode.png";
+import darkModeIcon from "../icons/darkmode.png";
+import wdiscordIcon from "../icons/wdiscord.png";
+import wtiktokIcon from "../icons/wtiktok.png";
+import wyoutubeIcon from "../icons/wyoutube.png";
+interface FooterProps {
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export default function Footer() {
-  const [darkMode, setDarkMode] = useState(false);
-
-useEffect(() => {
-  const root = window.document.documentElement;
-  if (darkMode) {
-    root.classList.add("dark");
-  } else {
-    root.classList.remove("dark");
-  }
-}, [darkMode]);
+export default function Footer({ darkMode, setDarkMode }: FooterProps) {
+  const navLinkClass =
+    "py-2 xl:px-0 hover:text-white hover:bg-[#AA00FF]  rounded w-max";
+  const linkClass = "hover:underline text-[#98A1B4] block opacity-50 mx-2";
+  const iconClass = "w-8 h-8 hover:bg-[#AA00FF] p-2 rounded";
+  
   return (
-    <footer className="w-[1440px] h-[493px] rotate-0 bg-[#FFFFFF]">
-      <div className="flex flex-col items-left justify-center h-screen">
-        <div className="w-[1312px] h-[164px] mt-[64px] ml-[64px] mr-[64px] flex justify-between">
-          
+    <div className={darkMode ? "dark" : ""}>
+      <div className="w-full rotate-0 bg-[#FFFFFF] dark:bg-[#101011] px-5">
+        <div className="xl:m-8 flex flex-col xl:flex-row justify-between items-strech">
           {/* Top Link Columns */}
           <div
-            className="w-[391px] h-[164px] flex gap-[60px] font-medium"
+            className="flex flex-col xl:flex-row font-medium m-2"
             style={{
               fontFamily: '"IBM Plex Mono", monospace',
-              color: '#000001',
-              fontSize: '16px',
+              color: darkMode ? "#FFFFFF" : "#000001",
+              fontSize: "16px",
             }}
           >
             {/* First Column */}
-            <div className="w-[68px] h-[164px] flex flex-col gap-[20px]">
-              <a href="#">Explore</a>
-              <a href="#">Create</a>
-              <a href="#">Learn</a>
-              <a href="#">Pricing</a>
+            <div className="flex flex-col p-1 m-0 xl:m-4">
+              <a href="#" className={navLinkClass}>
+                Explore
+              </a>
+              <a href="#" className={navLinkClass}>
+                Create
+              </a>
+              <a href="#" className={navLinkClass}>
+                Learn
+              </a>
+              <a href="#" className={navLinkClass}>
+                Pricing
+              </a>
             </div>
 
             {/* Second Column */}
-            <div className="w-[68px] h-[119px] flex flex-col gap-[20px]">
-              <a href="#">Blog</a>
-              <a href="#">My mods</a>
-              <a href="#">Contact</a>
+            <div className="flex flex-col p-1 m-0 xl:m-4">
+              <a href="#" className={navLinkClass}>
+                Blog
+              </a>
+              <a href="#" className={navLinkClass}>
+                My mods
+              </a>
+              <a href="#" className={navLinkClass}>
+                Contact
+              </a>
             </div>
 
             {/* Third Column */}
-            <div className="w-[135px] h-[74px] flex flex-col gap-[20px]">
-              <a href="#">Get free coins</a>
-              <a href="#">Sign in</a>
+            <div className="flex flex-col p-1 m-0 xl:m-4">
+              <a href="#" className={navLinkClass}>
+                Get free coins
+              </a>
+              <a href="#" className={navLinkClass}>
+                Sign in
+              </a>
             </div>
           </div>
 
           {/* Right Section with Mode Icon, Social Media, and Text */}
-          <div className="w-[400px] h-[164px] relative ml-auto flex flex-col justify-end items-end gap-[12px]">
-            {/* 🟢 Top-right Mode Icon */}
-           <button
-  onClick={() => setDarkMode(!darkMode)}
-  className="absolute top-0 right-0 w-[36px] h-[20px]"
->
-  <img src={modeIcon} alt="Mode Icon" className="w-full h-full" />
-</button>
+          <div className="flex flex-col justify-start xl:justify-between items-start xl:items-end mx-0 xl:m-2 gap-y-6">
+            {/* 🟢 Top-right Mode Icon Button */}
+            <button onClick={() => setDarkMode(!darkMode)}>
+              <img
+                src={darkMode ? darkModeIcon : modeIcon}
+                alt="Mode Icon"
+                className="m-4"
+              />
+            </button>
             {/* 🔵 Social Icons */}
-            <div className="w-[86px] h-[18px] flex justify-end gap-[12px]">
-              <img src={discordIcon} alt="Discord logo" className="w-[18px] h-[18px]" />
-              <img src={tiktokIcon} alt="TikTok" className="w-[18px] h-[18px]" />
-              <img src={youtubeIcon} alt="YouTube" className="w-[18px] h-[18px]" />
-            </div>
+            <div className="m-2  flex flex-col">
+              <div className="flex flex-row xl:justify-end">
+                <img
+                  src={darkMode ? wtiktokIcon : tiktokIcon}
+                  alt="TikTok"
+                  className={iconClass}
+                />
 
-            {/* 🟣 Bottom Text */}
-            <div
-              className="w-[400px] h-[32px] text-[16px] leading-[32px] font-normal opacity-50"
-              style={{
-                fontFamily: '"IBM Plex Mono", monospace',
-                letterSpacing: '-0.02em',
-              }}
-            >
-              Make the game your own. No coding required.
+                <img
+                  src={darkMode ? wdiscordIcon : discordIcon}
+                  alt="Discord"
+                  className={iconClass}
+                />
+
+                <img
+                  src={darkMode ? wyoutubeIcon : youtubeIcon}
+                  alt="YouTube"
+                  className={iconClass}
+                />
+              </div>
+              {/* 🟣 Social Text */}
+              <div
+                className="text-[16px] leading-[32px] font-normal opacity-50 break-words whitespace-normal m-2 p-0"
+                style={{
+                  fontFamily: '"IBM Plex Mono", monospace',
+                  letterSpacing: "-0.02em",
+                  color: darkMode ? "#FFFFFF" : "#000000",
+                }}
+              >
+                Make the game your own. No coding required.
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Disclaimer + Links + Logo */}
-        <div className="w-[1312px] h-[213px] mt-[67px] ml-[64px] gap-[8px]">
-          {/* Disclaimer */}
-          <div className="w-[1312px] h-[24px] flex justify-between items-start">
-  {/* Left: Disclaimer */}
-  <div className="text-[#250843] w-[1060px] h-[24px]">
-    <p
-      style={{
-        fontFamily: '"IBM Plex Mono", monospace',
-        fontSize: '12px',
-        color: '#000001',
-      }}
-    >
-      © 2025 Creativemode. Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.
-    </p>
-  </div>
+        {/* Disclaimer + Links */}
 
-  {/* Right: Links Container */}
-  <div className="flex gap-[21px]">
-    {/* Privacy Policy */}
-    <a
-      href="#"
-      className=" text-[#98A1B4] w-[101px] h-[17px] block"
-      style={{
-        fontFamily: '"IBM Plex Mono", monospace',
-        fontSize: '12px',
-        color: '#98A1B4',
-      }}
-    >
-      Privacy Policy
-    </a>
+        {/* Disclaimer */}
+        <div className="mx-0 xl:mx-10 flex flex-col xl:flex-row justify-between items-start gap-y-4">
+          {/* Left: Disclaimer */}
+          <div className="text-[#250843] mx-4 xl:mx-6">
+            <p
+              style={{
+                fontFamily: '"IBM Plex Mono", monospace',
+                fontSize: "12px",
+                color: darkMode ? "#FFFFFF" : "#250843",
+              }}
+            >
+              © 2025 Creativemode. Not an official Minecraft product. Not
+              approved by or associated with Mojang or Microsoft.
+            </p>
+          </div>
 
-    {/* Terms & Conditions */}
-    <a
-      href="#"
-      className=" text-[#98A1B4] w-[130px] h-[17px] block"
-      style={{
-        fontFamily: '"IBM Plex Mono", monospace',
-        fontSize: '12px',
-        color: '#98A1B4',
-      }}
-    >
-      Terms & Conditions
-    </a>
-  </div>
-</div>
+          {/* Right: Links Container */}
+          <div className="flex flex-row justify-between items-start mx-2 gap-y-4 mb-6 xl:mb-0">
+            {/* Privacy Policy */}
+            <a
+              href="#"
+              className={linkClass}
+              style={{
+                fontFamily: '"IBM Plex Mono", monospace',
+                fontSize: "12px",
+                color: darkMode ? "#FFFFFF" : "#98A1B4",
+              }}
+            >
+              Privacy Policy
+            </a>
 
-
-          {/* Logo */}
-          <h1
-          className="text-[#0F0F0F] uppercase font-normal"
-  style={{
-    fontFamily: '"Jersey 10", sans-serif',
-    fontSize: '288.38px',
-    lineHeight: '180.24px',
-    letterSpacing: '-0.02em',
-  }}
-          >
-            CREATIVEMODE
-          </h1>
+            {/* Terms & Conditions */}
+            <a
+              href="#"
+              className={linkClass}
+              style={{
+                fontFamily: '"IBM Plex Mono", monospace',
+                fontSize: "12px",
+                color: darkMode ? "#FFFFFF" : "#98A1B4",
+              }}
+            >
+              Terms & Conditions
+            </a>
+          </div>
         </div>
+
+        {/* Logo */}
+
+      
+    </div>
+    <div className="overflow-hidden">
+        <h1
+          className="uppercase font-normal xl:text-[288.38px] text-[91.03px] text-center xl:leading-[180.24px] leading-[56.9px]"
+          style={{
+            fontFamily: '"Jersey 10", sans-serif',
+            letterSpacing: "-0.02em",
+            color: darkMode ? "#FFFFFF" : "#0F0F0F",
+          }}
+        >
+          CREATIVEMODE
+        </h1>
       </div>
-    </footer>
+     </div>
   );
 }
