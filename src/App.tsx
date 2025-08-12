@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Footer from "./components/Footer";
 import Main from "./components/Main";
+import Pagination from "./components/Pagination";
+
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -13,6 +15,9 @@ export default function App() {
           <Main darkMode={darkMode} />
         </div>
 
+<div>
+  <Pagination />
+</div>
         {/* Footer stays at bottom */}
         <footer className="h-[88%] xl:h-[64%]">
           <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
