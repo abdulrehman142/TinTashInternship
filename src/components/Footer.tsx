@@ -169,7 +169,7 @@ export default function Footer({ darkMode, setDarkMode }: FooterProps) {
 
       
     </div>
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-[#FFFFFF] dark:bg-[#101011]">
         <h1
           className="uppercase font-normal xl:text-[288.38px] text-[91.03px] text-center xl:leading-[180.24px] leading-[56.9px]"
           style={{
