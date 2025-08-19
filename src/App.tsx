@@ -3,7 +3,7 @@ import Footer from "./components/Footer";
 import Main from "./components/Main";
 import Pagination from "./components/Pagination";
 import Hero from "./components/Hero";
-
+import Crafts from "./components/Crafts";
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -21,12 +21,14 @@ export default function App() {
 <div>
   <Hero />
 </div>
-
+<div >
+<Crafts/>
+</div>
         {/* Footer stays at bottom */}
-       {/* <footer className="h-[88%] xl:h-[64%]">
+        <footer className="h-[88%] xl:h-[64%]">
           <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
         </footer>
-        */}
+        
       </div>
     </div>
   );
