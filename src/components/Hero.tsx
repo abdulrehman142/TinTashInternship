@@ -21,7 +21,7 @@ interface HeroProps {
 export default function Hero({ darkMode, setDarkMode }: HeroProps) {
   const iconClass = "hover:bg-[#AA00FF] rounded  p-2 m-1 ";
   const [text1, setText1] = useState(
-    "|Creeper’s appearance"
+    "|Creeper's appearance"
   );
   const [text2, setText2] = useState(
     "How it should behave"
@@ -51,7 +51,6 @@ export default function Hero({ darkMode, setDarkMode }: HeroProps) {
         borderImageSlice: 1,
         display: "inline-block",
         padding: "4px 8px",
-        backgroundColor: "#fff",
         fontFamily: '"IBM Plex Mono", monospace',
         fontWeight: 700,
         fontSize: "14px",
@@ -64,8 +63,10 @@ export default function Hero({ darkMode, setDarkMode }: HeroProps) {
     <div className={darkMode ? "dark" : ""}>
       <div className="min-h-screen">
         <div
-          className="bg-contain bg-no-repeat bg-bottom bg-[#3878FB] p-2 "
-          style={{ backgroundImage: "url('/images/minecraft.png')" }}
+          className="bg-contain bg-no-repeat bg-bottom  bg-[#3878FB] dark:bg-[#090909] p-2 "
+          style={{  backgroundImage: darkMode
+      ? "url('/images/darkminecraft.png')" 
+      : "url('/images/minecraft.png')",}}
         >
           {/* Full height flex container */}
 
@@ -119,13 +120,14 @@ export default function Hero({ darkMode, setDarkMode }: HeroProps) {
                 <img src={wdiscordIcon} alt="Discord" className={iconClass} />
 
                 <img src={wyoutubeIcon} alt="YouTube" className={iconClass} />
-                <img src={moon} alt="Dark Mode" className={iconClass} />
+                <button onClick={() => setDarkMode(!darkMode)}><img src={moon} alt="Dark Mode" className={iconClass} /></button>
+                
               </div>
             </div>
 
             {/* Dropdown */}
             {open && (
-              <div className="absolute mt-2  top-14 left-127 bg-white border border-gray-200 text-black font-mono text-base font-bold z-[9999]">
+              <div className="absolute mt-2  top-14 left-127 bg-white border border-gray-200 text-black dark:text-white dark:bg-[#17181A] font-mono text-base font-bold z-[9999]">
                 {[
                   { icon: sword, label: "Items" },
                   { icon: mobs, label: "Mobs" },
@@ -135,12 +137,12 @@ export default function Hero({ darkMode, setDarkMode }: HeroProps) {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-2 m-2 hover:bg-gray-100  border-[#0000001A] border-4 flex items-center gap-2 cursor-pointer"
+                    className="p-2 m-2 hover:bg-gray-100 dark:hover:bg-gray-400 border-[#0000001A] dark:bg-[#27282D] border-4 flex items-center gap-2 cursor-pointer"
                   >
                     <img src={item.icon} alt={item.label} className="w-8 h-8" />
                     <span>{item.label}</span>
                     {item.soon && (
-                      <div className="ml-auto">
+                      <div className="ml-auto bg-white dark:bg-[#27282D]">
                         <ComingSoonTag />
                       </div>
                     )}
@@ -179,7 +181,7 @@ export default function Hero({ darkMode, setDarkMode }: HeroProps) {
               </h1>
             </div>
 
-            <div className="relative bg-[#FFFFFF] ml-4 p-4 pb-6 w-190">
+            <div className="relative bg-[#FFFFFF] dark:bg-[#17181A] border-transparent dark:border-[#FFFFFF1A] border-1  ml-4 p-4 pb-6 w-190">
               {/* Dragon Icon - half inside, half outside */}
               <div className="absolute -top-16 -right-22  p-2">
                 <img src={dragon} alt="Dragon" className="" />
@@ -195,35 +197,35 @@ export default function Hero({ darkMode, setDarkMode }: HeroProps) {
                   letterSpacing: "0.06em",
                 }}
               >
-                <div className="leading-[100%] p-2 ml-2 mt-2">Craft</div>
+                <div className="leading-[100%] p-2 ml-2 mt-2 dark:text-[#FFFFFF]">Craft</div>
                 <div className="pt-2">
                   <img src={mobs} alt="Mob" className="w-6 h-6" />
                 </div>
-                <div className="mt-2 p-1 mr-1">Mob</div>
+                <div className="mt-2 p-1 mr-1 dark:text-[#FFFFFF]">Mob</div>
 
                 <div>
-                  <img src={down} alt="Down" className="mt-2 py-2 mr-3" />
+                  <img src={darkMode ? wdown : down} alt="Down" className="mt-2 py-2 mr-3" />
                 </div>
                 <div className="mt-2">
                   <img src={creeper} alt="Creeper" className="w-6 h-6" />
                 </div>
-                <div className="mt-2 p-1 mr-1">Creeper</div>
+                <div className="mt-2 p-1 mr-1 dark:text-[#FFFFFF]">Creeper</div>
                 <div>
-                  <img src={down} alt="Down" className="mt-2 py-2" />
+                  <img src={darkMode ? wdown : down} alt="Down" className="mt-2 py-2" />
                 </div>
               </div>
 
               <div
-                className={`ml-4 mr-4 mt-2  border-2 transition-colors duration-200 ${
+                className={`ml-4 mr-4 mt-2  border-2  ${
                   isFocused1
-                    ? "border-[#825BD6] bg-[#825BD61A]"
-                    : "border-transparent bg-gray-200"
+                    ? "border-[#825BD6]  bg-[#825BD61A] "
+                    : "border-transparent dark:border-[#FFFFFF1A] border-1  bg-[#F2F2F2]  dark:bg-[#27282D]"
                 }`}
                 onClick={() => document.getElementById("editableDiv1").focus()} // click anywhere to focus
               >
                 <div
                   id="editableDiv1"
-                  className="p-2 m-2 text-[#6C6C84] outline-none"
+                  className="p-2 m-2 text-[#6C6C84] dark:text-[#FFFFFF] outline-none"
                   style={{
                     fontFamily: '"IBM Plex Mono", monospace',
                     fontWeight: 700,
@@ -243,16 +245,16 @@ export default function Hero({ darkMode, setDarkMode }: HeroProps) {
                 </div>
               </div>
               <div
-                className={`ml-4 mr-4 mt-2  border-2 transition-colors duration-200 ${
+                className={`ml-4 mr-4 mt-2  border-2 ${
                   isFocused2
                     ? "border-[#825BD6] bg-[#825BD61A]"
-                    : "border-transparent bg-gray-200"
+                    : "border-transparent dark:border-[#FFFFFF1A] border-1  bg-[#F2F2F2] dark:bg-[#27282D]"
                 }`}
                 onClick={() => document.getElementById("editableDiv2").focus()} // click anywhere to focus
               >
                 <div
                   id="editableDiv2"
-                  className="p-2 m-2 text-[#6C6C84] outline-none"
+                  className="p-2 m-2 text-[#6C6C84] dark:text-[#FFFFFF] outline-none"
                   style={{
                     fontFamily: '"IBM Plex Mono", monospace',
                     fontWeight: 700,
@@ -297,19 +299,19 @@ export default function Hero({ darkMode, setDarkMode }: HeroProps) {
               }}
             >
               <div className="flex">
-                <div className="bg-[#FFFFFFB2] p-2 m-0.5">BackPack Golem</div>
-                <div className="bg-[#FFFFFFB2] p-2 m-0.5">Time Compass</div>
-                <div className="bg-[#FFFFFFB2] p-2 m-0.5">
+                <div className="bg-[#FFFFFFB2] dark:bg-[#17181A] dark:text-[#FFFFFF] border-transparent dark:border-[#FFFFFF1A] border-1 p-2 m-0.5">BackPack Golem</div>
+                <div className="bg-[#FFFFFFB2] dark:bg-[#17181A] dark:text-[#FFFFFF] border-transparent dark:border-[#FFFFFF1A] border-1  p-2 m-0.5">Time Compass</div>
+                <div className="bg-[#FFFFFFB2] dark:bg-[#17181A] dark:text-[#FFFFFF] border-transparent dark:border-[#FFFFFF1A] border-1  p-2 m-0.5">
                   Portable Nether Rift
                 </div>
-                <div className="bg-[#FFFFFFB2] p-2 m-0.5">Biome Stabilizer</div>
+                <div className="bg-[#FFFFFFB2] dark:bg-[#17181A] dark:text-[#FFFFFF] border-transparent dark:border-[#FFFFFF1A] border-1  p-2 m-0.5">Biome Stabilizer</div>
               </div>
 
               <div className="flex">
-                <div className="bg-[#FFFFFFB2] p-2 m-0.5">Soul Mirror</div>
-                <div className="bg-[#FFFFFFB2] p-2 m-0.5">Astral Dust</div>
-                <div className="bg-[#FFFFFFB2] p-2 m-0.5">Warden's Eye</div>
-                <div className="bg-[#FFFFFFB2] p-2 m-0.5">Bloomshroom</div>
+                <div className="bg-[#FFFFFFB2] dark:bg-[#17181A] dark:text-[#FFFFFF] border-transparent dark:border-[#FFFFFF1A] border-1 p-2 m-0.5">Soul Mirror</div>
+                <div className="bg-[#FFFFFFB2] dark:bg-[#17181A] dark:text-[#FFFFFF] border-transparent dark:border-[#FFFFFF1A] border-1 p-2 m-0.5">Astral Dust</div>
+                <div className="bg-[#FFFFFFB2] dark:bg-[#17181A] dark:text-[#FFFFFF] border-transparent dark:border-[#FFFFFF1A] border-1 p-2 m-0.5">Warden's Eye</div>
+                <div className="bg-[#FFFFFFB2] dark:bg-[#17181A] dark:text-[#FFFFFF] border-transparent dark:border-[#FFFFFF1A] border-1 p-2 m-0.5">Bloomshroom</div>
               </div>
             </div>
           </div>

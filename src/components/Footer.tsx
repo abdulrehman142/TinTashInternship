@@ -21,7 +21,7 @@ export default function Footer({ darkMode, setDarkMode }: FooterProps) {
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="w-full rotate-0 bg-[#FFFFFF] dark:bg-[#101011] px-5">
-        <div className="xl:m-8 flex flex-col xl:flex-row justify-between items-strech">
+        <div className="xl:mx-8 flex flex-col xl:flex-row justify-between items-strech">
           {/* Top Link Columns */}
           <div
             className="flex flex-col xl:flex-row font-medium m-2"

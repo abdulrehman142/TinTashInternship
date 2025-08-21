@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <div className={`${darkMode ? "dark" : ""}`}>
-      <div className="h-screen flex flex-col">
+      <div className="flex flex-col">
         {/* Main content takes top space */}
         {/*<main className="flex-grow">
           <Main />
@@ -19,13 +19,13 @@ export default function App() {
   <Pagination />
 </div>*/}
 <div>
-  <Hero />
+  <Hero darkMode={darkMode} setDarkMode={setDarkMode}/>
 </div>
 <div >
-<Crafts/>
+<Crafts darkMode={darkMode} setDarkMode={setDarkMode} />
 </div>
         {/* Footer stays at bottom */}
-        <footer className="h-[88%] xl:h-[64%]">
+        <footer>
           <Footer darkMode={darkMode} setDarkMode={setDarkMode} />
         </footer>
         
