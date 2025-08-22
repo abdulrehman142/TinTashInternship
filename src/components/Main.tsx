@@ -1,4 +1,4 @@
-export default function Main() {
+const Main = () => {
   return (
     <div className="h-full bg-blue-100 flex flex-col items-center justify-center text-center px-4">
       <h1 className="text-3xl font-extrabold text-blue-800 mb-4">
@@ -10,4 +10,6 @@ export default function Main() {
       </p>
     </div>
   );
-}
+};
+
+export default Main;

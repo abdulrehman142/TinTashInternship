@@ -1,16 +1,7 @@
-"use client";
-
 import { useState } from "react";
-import Pagination from "./Pagination";
+import Pagination from "./Pagination.tsx";
 
-// Dummy data
-const dummyData = Array.from({ length: 50 }, (_, i) => ({
-  id: i + 1,
-  name: `Item ${i + 1}`,
-  description: `This is the description for item ${i + 1}`,
-}));
-
-const DummyTable = () => {
+const DummyTableWithPagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(10);
 
@@ -26,7 +17,6 @@ const DummyTable = () => {
         setCurrentPage={setCurrentPage}
         setLimit={setLimit}
       />
-
       <h1 className="text-2xl font-bold mb-4">
         Dummy Table with Rows Per Page & Go To Page
       </h1>
@@ -53,4 +43,4 @@ const DummyTable = () => {
   );
 };
 
-export default DummyTable;
+export default DummyTableWithPagination;
